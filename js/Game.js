@@ -129,11 +129,13 @@ gameOver(gameWon) {
 
     if (gameWon) {
         this.resetGame();
+        overlay.className='win';
         overlay.style.display = "block";
         message.textContent = "Congratulations, you have won the game!"
         resetButton.textContent = 'Play Again';
     } else {
         this.resetGame();
+        overlay.className='lose';
         overlay.style.display = "block";
         message.textContent = "Unfortunately, you have lost the game!"
         resetButton.textContent = 'Try Again';
@@ -204,14 +206,16 @@ for (let o=0;o<wrongKeys.length; o++){
 // the gameboard to display the `liveHeart.png` image.
 this.missed=0;
 
-const hearts = document.querySelectorAll(".tries");
+const hearts = document.querySelector("#scoreboard");
 console.log(hearts);
 //The <li> tag defines a list item.
-hearts.innerHTML="";
+hearts.innerHTML='';
+hearts.innerHTML+='<ol>';
 for (let i=0; i<5;i++){
     hearts.innerHTML+= '<li class="tries"><img src="images/liveHeart.png" alt="Heart Icon" height="35" width="30"></li>';
 }
-console.log(hearts);
+hearts.innerHTML+='</ol>';
+
 }
 
     };
